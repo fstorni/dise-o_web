@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IDENTIKIT</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="estilos_css.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="navbar">
+      <span class="logo">Mi IDENTIKIT</span>
+      <ul class="nav-links">
+        <li><a href="#bienvenida"><i class="fa-solid fa-house"></i> Inicio</a></li>
+        <li><a href="#sobre-mi"><i class="fa-solid fa-user"></i> Sobre mí</a></li>
+        <li><a href="#juego"><i class="fa-solid fa-gamepad"></i> Trivia</a></li>
+        <li><a href="#multimedia"><i class="fa-solid fa-music"></i> Mi playlist y video favorito</a></li>
+        <li><a href="#contacto"><i class="fa-solid fa-envelope"></i> Conoceme mas</a></li>
+
+      
+      </ul>
+    </nav>
+  </header>
+
+  <div class="layout-principal">
+
+    <main class="contenido-principal">
+
+      <section id="bienvenida" class="hero">
+        <div class="hero-content">
+          <p class="hero-saludo">Bienvenidos a mi identikit</p>
+          <h1 class="hero-nombre">Me llamo Felipe Storni</h1>
+          <p class="hero-descripcion"> Soy estudiante en uade de la licenciatura en sistemas cursando Diseño Web</p>
+          <a href="#sobre-mi" class="btn-principal">
+            <i class="fa-solid fa-arrow-down"></i> Conoceme más
+          </a>
+        </div>
+        <div class="hero-imagen">
+          <img alt="Foto de perfil"
+            src="foto_de_perfil.jpeg"
+            width="240"
+            height="240"
+          />
+        </div>
+      </section>
+
+      <section id="sobre-mi" class="seccion sobre-mi">
+        <h2 class="seccion-titulo">Sobre mí</h2>
+        <div class="sobre-mi-contenido">
+          <p>
+            Hola, mi nombre es <strong>Felipe</strong>. Tengo veintiun años y actualmente vivo en la ciudad de Buenos Aires aunque naci en la ciudad de Pilar.
+            desde hace dos años que estoy cursando la licenciatura en sistemas en la UADE
+            Me interesa el mundo de la programacion y la tecnología, y la idea de este trabajo practico es que conozcan mas sobre mi.
+            Tengo dos hermanos, mi color favorito es el rojo y mi hobby principal, a parte del estudio, es correr.
+          </p>
+        </div>
+      </section>
+
+
+      <section id="juego" class="seccion trivia-seccion">
+        <h2 class="seccion-titulo">
+          <i class="fa-solid fa-circle-question"></i> ¿Me conocés? Vamos a una trivia
+        </h2>
+        <p class="seccion-descripcion">Respondé estas preguntas y descubrí cuánto sabés sobre mí.</p>
+
+        <div class="trivia-contenedor">
+
+          <div class="pregunta" id="p1">
+            <p class="pregunta-texto">1. ¿Cuál es mi color favorito?</p>
+            <ul class="opciones">
+              <li><button class="opcion-btn" data-correcta="false" onclick="responder(this)">Azul</button></li>
+              <li><button class="opcion-btn" data-correcta="true" onclick="responder(this)">Rojo</button></li>
+              <li><button class="opcion-btn" data-correcta="false" onclick="responder(this)">Verde</button></li>
+              <li><button class="opcion-btn" data-correcta="false" onclick="responder(this)">Amarillo</button></li>
+            </ul>
+            <p class="feedback" id="feedback-p1"></p>
+          </div>
+
+          <div class="pregunta" id="p2">
+            <p class="pregunta-texto">2. ¿En qué ciudad nací?</p>
+            <ul class="opciones">
+              <li><button class="opcion-btn" data-correcta="false" onclick="responder(this)">Córdoba</button></li>
+              <li><button class="opcion-btn" data-correcta="false" onclick="responder(this)">Rosario</button></li>
+              <li><button class="opcion-btn" data-correcta="true" onclick="responder(this)">Pilar</button></li>
+              <li><button class="opcion-btn" data-correcta="false" onclick="responder(this)">CABA</button></li>
+            </ul>
+            <p class="feedback" id="feedback-p2"></p>
+          </div>
+
+          <div class="pregunta" id="p3">
+            <p class="pregunta-texto">3. ¿Cuál es mi hobby principal?</p>
+            <ul class="opciones">
+              <li><button class="opcion-btn" data-correcta="false" onclick="responder(this)">Cocinar</button></li>
+              <li><button class="opcion-btn" data-correcta="true" onclick="responder(this)">Salir a correr</button></li>
+              <li><button class="opcion-btn" data-correcta="false" onclick="responder(this)">La carpinteria</button></li>
+              <li><button class="opcion-btn" data-correcta="false" onclick="responder(this)">Hacer cerámica</button></li>
+            </ul>
+            <p class="feedback" id="feedback-p3"></p>
+          </div>
+
+          <div class="trivia-resultado" id="resultado" style="display:none;">
+            <p>Terminaste la trivia. Tu puntaje: <strong id="puntaje-final">0</strong> / 3</p>
+            <button class="btn-principal" onclick="reiniciarTrivia()">
+              <i class="fa-solid fa-rotate-right"></i> Jugar de nuevo
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="multimedia" class="seccion multimedia-seccion">
+        <h2 class="seccion-titulo">
+          <i class="fa-solid fa-headphones"></i> Te comparto mi playlist favorita
+        </h2>
+        <p class="seccion-descripcion">David Bowie es mi artista favorito que no puedo parar de escuchar:</p>
+
+        <a href="https://open.spotify.com/playlist/5VAhebugcr4JRqS54JVyQr?si=73a45f1a7ad94587" target="_blank" class="btn-principal playlist-link">
+          <i class="fa-brands fa-spotify"></i> Mira mi playlist completa
+        </a>
+
+        <div class="media-bloque">
+          <h3 class="subtitulo"><i class="fa-brands fa-youtube"></i> Video favorito</h3>
+          <iframe
+            class="video-iframe"
+            width="560"
+            height="315"
+            src="https://www.youtube.com/watch?v=JF0Vxm3eg2I"
+            title="Video favorito"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+      </section>
+
+      <section id="contacto" class="seccion contacto">
+        <h2 class="seccion-titulo">Contacto</h2>
+        <p>¿Querés conocerme más? Escribime en:</p>
+        <ul class="lista-redes">
+          <li>
+            <a href="mailto:tuemail@ejemplo.com">
+              <i class="fa-solid fa-envelope"></i> fstorni@uade.edu.ar
+            </a>
+          </li>
+        </ul>
+      </section>
+
+    </main>
+
+    <aside class="sidebar">
+
+      <div class="sidebar-widget">
+        <h3 class="sidebar-titulo"><i class="fa-solid fa-id-card"></i> Info rápida</h3>
+        <ul class="sidebar-lista">
+          <li><i class="fa-solid fa-cake-candles"></i> 21 años</li>
+          <li><i class="fa-solid fa-location-dot"></i> Soy de Pilar</li>
+          <li><i class="fa-solid fa-graduation-cap"></i> Estudio la licenciatura en sistemas</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-widget">
+        <h3 class="sidebar-titulo"><i class="fa-solid fa-link"></i> Uso estas redes:</h3>
+        <ul class="sidebar-lista">
+          <li><a href="https://instagram.com/tuusuario" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+          <li><a href="https://github.com/tuusuario" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a></li>
+        </ul>
+      </div>
+      
+    </aside>
+
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-contenido">
+      <ul class="footer-links">
+        <li><a href="#bienvenida">Inicio</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    let puntaje = 0;
+    let respondidas = 0;
+    const totalPreguntas = 3;
+
+    function responder(boton) {
+      const preguntaDiv = boton.closest('.pregunta');
+      const feedbackEl = preguntaDiv.querySelector('.feedback');
+      if (preguntaDiv.dataset.respondida) return;
+      preguntaDiv.dataset.respondida = 'true';
+
+      const esCorrecta = boton.dataset.correcta === 'true';
+
+      preguntaDiv.querySelectorAll('.opcion-btn').forEach(btn => {
+        btn.disabled = true;
+        if (btn.dataset.correcta === 'true') btn.classList.add('correcta');
+      });
+
+      if (esCorrecta) {
+        boton.classList.add('correcta');
+        feedbackEl.textContent = '✅ ¡Correcto!';
+        feedbackEl.style.color = '#22a06b';
+        puntaje++;
+      } else {
+        boton.classList.add('incorrecta');
+        feedbackEl.textContent = '❌ Incorrecto';
+        feedbackEl.style.color = '#e03a3a';
+      }
+
+      respondidas++;
+      if (respondidas === totalPreguntas) {
+        document.getElementById('puntaje-final').textContent = puntaje;
+        document.getElementById('resultado').style.display = 'block';
+      }
+    }
+
+    function reiniciarTrivia() {
+      puntaje = 0;
+      respondidas = 0;
+      document.querySelectorAll('.pregunta').forEach(p => {
+        delete p.dataset.respondida;
+        p.querySelectorAll('.opcion-btn').forEach(b => {
+          b.disabled = false;
+          b.classList.remove('correcta', 'incorrecta');
+        });
+        p.querySelector('.feedback').textContent = '';
+      });
+      document.getElementById('resultado').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
